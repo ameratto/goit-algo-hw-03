@@ -2,7 +2,6 @@ from datetime import datetime, date
 import random
 from typing import Any
 import re
-from unittest import case
 
 
 # Функція приймає один параметр: date — рядок, що представляє дату у форматі 'РРРР-ММ-ДД' (наприклад, '2020-10-09').
