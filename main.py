@@ -10,25 +10,30 @@ import re
 # Для роботи з датами слід використовувати модуль datetime Python.
 def get_days_from_today(user_date: str):
     today = date.today().toordinal()
-    corrected_date_format = re.findall(r'\d+', re.sub(r'[-./]', " ", user_date))
-    match corrected_date_format:
-        case [y, m, d] if len(y) == 4 and (len(m) == 2 and int(m) <= 12) and len(d) == 2:
-            # print("format: YYYY MM DD")
-            return date(year=int(y), month=int(m), day=int(d)).toordinal() - today
-        case [y, d, m] if len(y) == 4 and len(d) == 2 and (len(m) == 2 and int(m) <= 12):
-            # print("format: YYYY DD MM")
-            return date(year=int(y), month=int(m), day=int(d)).toordinal() - today
-        case [d, m, y] if len(d) == 2 and (len(m) == 2 and int(m) <= 12) and len(y) == 4:
-            # print("format: DD MM YYYY")
-            return date(year=int(y), month=int(m), day=int(d)).toordinal() - today
-        case [m, d, y] if (len(m) == 2 or int(m) <= 12) and len(d) == 2 and len(y) == 4:
-            # print("format: MM DD YYYY")
-            return date(year=int(y), month=int(m), day=int(d)).toordinal() - today
-        case _:
-            return None
+    format_list = [
+        "%Y-%m-%d",
+        "%Y/%m/%d",
+        "%Y.%m.%d",
+        "%Y-%d-%m",
+        "%Y/%d/%m",
+        "%Y.%d.%m",
+        "%d-%m-%Y",
+        "%d/%m/%Y",
+        "%d.%m.%Y",
+        "%m-%d-%Y",
+        "%m/%d/%Y",
+        "%m.%d.%Y",
+    ]
+    for format in format_list:
+        try:
+            return datetime.strptime(user_date, format).toordinal() - today
+        except ValueError:
+            continue
+
+    return None
 
 
-def get_numbers_ticket(val_max: int, val_min: int, val_quantity: int) -> list[Any]:
+def get_numbers_ticket(val_min: int, val_max: int, val_quantity: int) -> list[Any]:
     set_of_numbers = set()
     if val_min < 1 or val_max > 1000:
         print(f"Невірне значення параметра min або max: {val_min if val_min <= 0 else val_max}")
@@ -52,25 +57,26 @@ def normalize_phone(phone_number: str):
     #         return phone_number
 
 
-desired_dates = ["2026-07-11",
-                 "2026/07/11",
-                 "2026/11/07",
-                 "11/07/2026",
-                 "07/11/2026"]
-# print("Завдання 1:")
-# for desired_date in desired_dates:
-#     print(f"Результат виконання функції get_days_from_today : \n\
-#     Кількість днів від сьогоднішньої дати {date.today()} до вказаної {desired_date} = \
-#     {get_days_from_today(desired_date)}")
+desired_dates = ["2026-08-11",
+                 "2026/07/19",
+                 "2026/13/07",
+                 "11/17/2026",
+                 "5/11/2026"]
+print("Завдання 1:")
+for desired_date in desired_dates:
+    print(get_days_from_today(desired_date))
+    # print(f"Результат виконання функції get_days_from_today : \n\
+    # Кількість днів від сьогоднішньої дати {date.today()} до вказаної {desired_date} = \
+    # {get_days_from_today(desired_date)}")
 
 # ----- #
 
 var_min = 5
 var_max = 1560
 quantity = 5
-print("Завдання 2:")
-print(f"Результат виконання функції get_numbers_ticket з наступними параметрами var_min = {var_min}, var_max = {var_max}, quantity = {quantity}: \n\
-{get_numbers_ticket(var_max, var_min, quantity)}")
+# print("Завдання 2:")
+# print(f"Результат виконання функції get_numbers_ticket з наступними параметрами var_min = {var_min}, var_max = {var_max}, quantity = {quantity}: \n\
+# {get_numbers_ticket(var_min, var_max, quantity)}")
 
 # ----- #
 
