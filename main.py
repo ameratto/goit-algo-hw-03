@@ -62,12 +62,11 @@ desired_dates = ["2026-08-11",
                  "2026/13/07",
                  "11/17/2026",
                  "5/11/2026"]
-print("Завдання 1:")
-for desired_date in desired_dates:
-    print(get_days_from_today(desired_date))
-    # print(f"Результат виконання функції get_days_from_today : \n\
-    # Кількість днів від сьогоднішньої дати {date.today()} до вказаної {desired_date} = \
-    # {get_days_from_today(desired_date)}")
+# print("Завдання 1:")
+# for desired_date in desired_dates:
+#     print(f"Результат виконання функції get_days_from_today : \n\
+#     Кількість днів від сьогоднішньої дати {date.today()} до вказаної {desired_date} = \
+#     {get_days_from_today(desired_date)}")
 
 # ----- #
 
