@@ -80,9 +80,9 @@ desired_dates = ["2026-08-11",
 var_min = 10
 var_max = 14
 quantity = 6
-print("Завдання 2:")
-print(f"Результат виконання функції get_numbers_ticket з наступними параметрами var_min = {var_min}, var_max = {var_max}, quantity = {quantity}: \n\
-{get_numbers_ticket(var_min, var_max, quantity)}")
+# print("Завдання 2:")
+# print(f"Результат виконання функції get_numbers_ticket з наступними параметрами var_min = {var_min}, var_max = {var_max}, quantity = {quantity}: \n\
+# {get_numbers_ticket(var_min, var_max, quantity)}")
 
 # ----- #
 
