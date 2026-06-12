@@ -45,7 +45,7 @@ def get_numbers_ticket(val_min: int, val_max: int, val_quantity: int) -> list[An
         #print(f"Кількість запрошуваних чисел {val_quantity} більша за вказаний діапазон [{val_min}; {val_max}]")
         return list()
     else:
-        while len(set_of_numbers) <= val_quantity:
+        while len(set_of_numbers) < val_quantity:
             set_of_numbers.add(random.randint(val_min, val_max))
         return sorted(list(set_of_numbers))
 
@@ -78,11 +78,12 @@ desired_dates = ["2026-08-11",
 # ----- #
 
 var_min = 10
-var_max = 14
+var_max = 120
 quantity = 6
-# print("Завдання 2:")
-# print(f"Результат виконання функції get_numbers_ticket з наступними параметрами var_min = {var_min}, var_max = {var_max}, quantity = {quantity}: \n\
-# {get_numbers_ticket(var_min, var_max, quantity)}")
+print("Завдання 2:")
+print(f"Результат виконання функції get_numbers_ticket з наступними параметрами var_min = {var_min}, var_max = {var_max}, quantity = {quantity}: \n\
+{get_numbers_ticket(var_min, var_max, quantity)}")
+print(len(get_numbers_ticket(var_min, var_max, quantity)))
 
 # ----- #
 
